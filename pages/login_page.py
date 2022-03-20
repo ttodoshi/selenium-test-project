@@ -1,5 +1,5 @@
 from .base_page import BasePage
-from .locators import MainPageLocators
+from .locators import LoginPageLocators
 
 
 class LoginPage(BasePage):
@@ -13,12 +13,12 @@ class LoginPage(BasePage):
         # реализуйте проверку на корректный url адрес
 
     def should_be_login_form(self):
-        assert self.is_element_present(*MainPageLocators.LOGIN_EMAIL), "Login email text area is not presented"
-        assert self.is_element_present(*MainPageLocators.LOGIN_PASSWORD), "Login password text area is not presented"
+        assert self.is_element_present(*LoginPageLocators.LOGIN_EMAIL), "Login email text area is not presented"
+        assert self.is_element_present(*LoginPageLocators.LOGIN_PASSWORD), "Login password text area is not presented"
         # реализуйте проверку, что есть форма логина
 
     def should_be_register_form(self):
-        assert self.is_element_present(*MainPageLocators.REGISTRATION_EMAIL), "Registration email text area is not presented"
-        assert self.is_element_present(*MainPageLocators.REGISTRATION_PASSWORD), "Registration password text area is not presented"
-        assert self.is_element_present(*MainPageLocators.REGISTRATION_PASSWORD_CONFIRM), "Registration password confirm text area is not presented"
+        assert self.is_element_present(*LoginPageLocators.REGISTRATION_EMAIL), "Registration email text area is not presented"
+        assert self.is_element_present(*LoginPageLocators.REGISTRATION_PASSWORD), "Registration password text area is not presented"
+        assert self.is_element_present(*LoginPageLocators.REGISTRATION_PASSWORD_CONFIRM), "Registration password confirm text area is not presented"
         # реализуйте проверку, что есть форма регистрации на странице
