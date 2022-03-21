@@ -6,6 +6,7 @@ class PageObject(BasePage):
     def __init__(self, browser, url):
         self.browser = browser
         self.url = url
+        
     def add_product_to_basket(self):
         add_to_basket_button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET)
         add_to_basket_button.click()
@@ -24,3 +25,11 @@ class PageObject(BasePage):
         cost_of_the_basket = self.browser.find_element(*ProductPageLocators.BASKET_COST).text
         cost_of_the_product = self.browser.find_element(*ProductPageLocators.PRODUCT_COST).text
         assert cost_of_the_basket == cost_of_the_product, 'Стоимость корзины и товара различается, возможно товар не добавлен в корзину'
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.MESSAGE_ADD_TO_BASKET), \
+            "Success message is presented, but should not be"
+
+    def should_dissapear_of_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.MESSAGE_ADD_TO_BASKET), \
+            "Success message is presented, but should not be"
