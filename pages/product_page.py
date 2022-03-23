@@ -1,4 +1,4 @@
-from selenium_test_project.pages.base_page import BasePage
+from .base_page import BasePage
 from .locators import ProductPageLocators
 
 

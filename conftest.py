@@ -14,18 +14,16 @@ def pytest_addoption(parser):
 def browser(request):
     user_language = request.config.getoption('language')
 
-    chrome_options = Options()
-    chrome_options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
-
-    edge_options = msedge_options.Options()
-    edge_options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
-
     browser_name = request.config.getoption("browser_name")
     browser = None
     if browser_name == "chrome":
+        chrome_options = Options()
+        chrome_options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
         print("\nstart chrome browser for test..")
         browser = webdriver.Chrome(options=chrome_options)
     elif browser_name == "msedge":
+        edge_options = msedge_options.Options()
+        edge_options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
         print("\nstart msedge browser for test..")
         browser = webdriver.Edge(options=edge_options)
 
